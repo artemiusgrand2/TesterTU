@@ -6,7 +6,6 @@ D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.GenerateResource.cach
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.CoreCompileInputs.cache
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.exe
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.pdb
-D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.MainForm.resources
 D:\Distr\TesterTU\TesterTU\bin\Debug\TesterTU.exe
 D:\Distr\TesterTU\TesterTU\bin\Debug\TesterTU.pdb
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.Views.MainForm.resources
@@ -27,3 +26,14 @@ D:\Distr\TesterTU\TesterTU\bin\Debug\TesterTU.exe.config
 D:\Distr\TesterTU\TesterTU\bin\Debug\DataStream.SerialPort.dll
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.CopyComplete
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.AssemblyReference.cache
+D:\Distributiv\TesterTU\TesterTU\bin\Debug\TesterTU.exe.config
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTS.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTU.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.KevValueControlcs.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTSTUCommon.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.MainForm.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.SettingsPanel.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TableDiagnostControl.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TSPanel.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TUPanel.resources
+D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.CopyComplete

@@ -65,23 +65,30 @@ namespace TesterTU.Controllers
         public static byte GetCRC8(byte [] data)
         {
             byte crc8 = 0;
-            var d = new byte[] { 0xD1, 0x7C, 0x7F, 0x7C, 0x7E, 0x0F, 0x0F };
-            for (var byteNum = 0; byteNum < d.Length; byteNum++)
+            foreach (var byteCur in new byte[] { 0xD1, 0x7C, 0x7F, 0x7C, 0x7E, 0x0F, 0x0F })
             {
-                var byteCur = d[byteNum];
-                byte dl = 0;
                 for (var numberBit = 0; numberBit < 8; numberBit++)
                 {
-                    byteCur = (byte)(byteCur ^ crc8);
-                    if ((byteCur & 1) == 1) dl = 0x80;
-                    //
-                    byteCur = (byte)(byteCur >> 1);
-                    crc8 = byteCur;
+                    var newBit = (byte)(~((byteCur >> numberBit) ^ crc8) & 1);
+                    var bufferXor = new BitArray(new byte[] { (byte)((crc8 << 1) ^ crc8)});
+                    var bufferNew = new BitArray(new byte[] { (byte)(crc8 << 1) });
+                    bufferNew.Set(3, bufferXor[3]);
+                    bufferNew.Set(4, bufferXor[4]);
+                    bufferNew.Set(0, newBit == 1);
+                    crc8 = GetByteFromBitArray(bufferNew);
                 }
+
+                //byteCur = (byte)(byteCur ^ crc8);
+                //if ((byteCur & 1) == 1) dl = 0x80;
+                ////
+                //byteCur = (byte)(byteCur >> 1);
+                //crc8 = byteCur;
             }
             //
             return crc8;
         }
+
+
 
     }
 }
