@@ -65,41 +65,22 @@ namespace TesterTU.Controllers
         public static byte GetCRC8(byte [] data)
         {
             byte crc8 = 0;
-            //foreach (var byteCur in new byte[] { 0xD1, 0x7C, 0x7F, 0x7C, 0x7E, 0x0F, 0x0F })
-            //{
-            //    for (var numberBit = 0; numberBit < 8; numberBit++)
-            //    {
-            //        var newBit = (byte)(~((byteCur >> numberBit) ^ crc8) & 1);
-            //        var bufferXor = new BitArray(new byte[] { (byte)((crc8 << 1) ^ crc8)});
-            //        var bufferNew = new BitArray(new byte[] { (byte)(crc8 << 1) });
-            //        bufferNew.Set(3, bufferXor[3]);
-            //        bufferNew.Set(4, bufferXor[4]);
-            //        bufferNew.Set(0, newBit == 1);
-            //        crc8 = GetByteFromBitArray(bufferNew);
-            //    }
-
-            //    //byteCur = (byte)(byteCur ^ crc8);
-            //    //if ((byteCur & 1) == 1) dl = 0x80;
-            //    ////
-            //    //byteCur = (byte)(byteCur >> 1);
-            //    //crc8 = byteCur;
-            //}
-            foreach (var byteCur in new byte[] { 0xD1, 0x7C, 0x7F, 0x7C, 0x7E, 0x0F, 0x0F })
+            foreach (var byteCur in data)
             {
                 var ah = byteCur;
                 var al = ah;
                 byte dl = 0;
                 for (var numberBit = 0; numberBit < 8; numberBit++)
                 {
-                    byte A1 = (byte)(byteCur ^ crc8);
+                    al = (byte)(al ^ crc8);
                     dl = 0;
-                    if ((A1 & 1) == 1) dl = 0x80;
+                    if ((al & 1) == 1) dl = 0x80;
                     al = crc8;
-                    if (dl == 0) A1 = (byte)(A1 ^ 0x18);
-                    A1 = (byte)(A1 >> 1);
-                    crc8 = A1;
+                    if (dl != 0) al = (byte)(al ^ 0x18);
+                    al = (byte)(al >> 1);
+                    crc8 = al;
                     crc8 = (byte)(crc8 ^ dl);
-
+                    //
                     if ((ah & 1) == 0) ah = (byte)(ah >> 1);
                     else
                     {
@@ -113,8 +94,6 @@ namespace TesterTU.Controllers
             //
             return crc8;
         }
-
-
 
     }
 }

@@ -108,7 +108,7 @@ namespace TesterTU.Models
                 }
                 //
                 var byteCRC = ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray());
-                data[7] = (byte)((byteCRC & 120) >> 4);
+                data[7] = (byte)((byteCRC & 240) >> 4);
                 data[8] = (byte)(byteCRC & 15);
                 //
                 return data;
@@ -138,7 +138,7 @@ namespace TesterTU.Models
                 return;
             }
             //
-            var crc = (byte)(data[data.Length - 1] | (data[data.Length - 2] << 4));
+            var crc = (byte)(data[data.Length - 1] | (byte)(data[data.Length - 2] << 4));
             if(crc != ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray()))
             {
                 Errors++;
