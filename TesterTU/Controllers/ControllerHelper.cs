@@ -37,7 +37,7 @@ namespace TesterTU.Controllers
             return result;
         }
 
-        public static Color GetColorOutPut(byte value)
+        public static Color GetColorOutPut(int value)
         {
             switch (value)
             {
@@ -48,7 +48,7 @@ namespace TesterTU.Controllers
                 case 3:
                     return Color.Black;
                 default:
-                    return Color.White;
+                    return Color.Gray;
             }
         }
 
@@ -61,6 +61,8 @@ namespace TesterTU.Controllers
             bits.CopyTo(bytes, 0);
             return bytes[0];
         }
+
+
 
         public static byte GetCRC8(byte [] data)
         {

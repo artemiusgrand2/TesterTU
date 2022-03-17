@@ -44,9 +44,9 @@ namespace TesterTU.Views
                 case "Value":
                     {
                         if (model.Index != 9)
-                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == 1) ? Color.Green : Color.Red;
+                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == -1) ? Color.Gray : (model.Value == 1) ? Color.Green : Color.Red;
                         else
-                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == 1) ? Color.Red : Color.Green;
+                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == -1) ? Color.Gray : (model.Value == 1) ? Color.Red : Color.Green;
                     }
                     break;
             }

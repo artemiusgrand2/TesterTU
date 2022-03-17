@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataStream.SerialPort">
-      <HintPath>..\..\TesterTI10\TesterTI10\TesterTI10\bin\Debug\DataStream.SerialPort.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ControllerMain.cs" />
+    <Compile Include="Controllers\ControllerSerialPort.cs" />
     <Compile Include="Enums\ViewDevice.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
     <Compile Include="Models\ModelCommon.cs" />

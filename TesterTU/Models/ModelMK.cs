@@ -53,13 +53,19 @@ namespace TesterTU.Models
             }
         }
 
+        private byte firstByteRequestTU = 0xD1;
+        private byte firstByteRequestTS = 0xB1;
+
+        private byte firstByteAnswerTU = 0xD2;
+        private byte firstByteAnswerTS = 0xB2;
+
         public byte[] RequestBytes
         {
             get
             {
                 var data = new byte[9];
-                var bytesMK0 = BitConverter.GetBytes(_modelParent.AdressMK0);
-                var bytesMKn = BitConverter.GetBytes((ushort)(NumberMK == 1 ? _modelParent.AdressMK1 : _modelParent.AdressMK2));
+                var bytesMK0 = BitConverter.GetBytes((ushort)(_modelParent.AdressMK0 << 1));
+                var bytesMKn = BitConverter.GetBytes((ushort)(NumberMK == 1 ? _modelParent.AdressMK1 : _modelParent.AdressMK2) << 1);
                 //
                 for (var index = 0; index < data.Length - 2; index++)
                 {
@@ -67,7 +73,7 @@ namespace TesterTU.Models
                     {
                         case 0:
                             {
-                                data[index] = (byte)((_modelParent.View == ViewDevice.tu) ? 209 : 177);
+                                data[index] = (byte)((_modelParent.View == ViewDevice.tu) ? firstByteRequestTU : firstByteRequestTS);
                             }
                             break;
                         case 1:
@@ -77,7 +83,7 @@ namespace TesterTU.Models
                             break;
                         case 2:
                             {
-                                data[index] = (byte)(bytesMKn[0] & 127);
+                                data[index] = (byte)((bytesMKn[0] >> 1) & 127);
                             }
                             break;
                         case 3:
@@ -87,7 +93,7 @@ namespace TesterTU.Models
                             break;
                         case 4:
                             {
-                                data[index] = (byte)(bytesMK0[0] & 127);
+                                data[index] = (byte)((bytesMK0[0] >> 1) & 127);
                             }
                             break;
                         case 5:
@@ -129,17 +135,17 @@ namespace TesterTU.Models
             for (var index = 1; index <= (_modelParent.View == ViewDevice.ts ? 18 : 9); index++)
                 Outputs.Add(new ModelOutput(index));
         }
-        public void ParseData(byte[] data)
+        public void ParseData(IList<byte> data)
         {
             Sessions++;
-            if (_modelParent.View == ViewDevice.ts && data.Length != 12 || _modelParent.View == ViewDevice.tu && data.Length != 9)
+            if (_modelParent.View == ViewDevice.ts && data.Count != 12 || _modelParent.View == ViewDevice.tu && data.Count != 9)
             {
                 Errors++;
                 return;
             }
             //
-            var crc = (byte)(data[data.Length - 1] | (byte)(data[data.Length - 2] << 4));
-            if(crc != ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray()))
+            var crc = (byte)(data[data.Count - 1] | (byte)(data[data.Count - 2] << 4));
+            if(crc != ControllerHelper.GetCRC8(data.Take(data.Count - 2).ToArray()))
             {
                 Errors++;
                 return;
@@ -148,17 +154,17 @@ namespace TesterTU.Models
             if(_modelParent.View == ViewDevice.tu)
             {
                 for(var index =0; index <= 6; index++)
-                    Outputs[index].Value = (byte)((data[data.Length - 3] >> index) & 1);
+                    Outputs[index].Value = (byte)((data[data.Count - 3] >> index) & 1);
                 //
                 for (var index = 0; index <= 1; index++)
-                    Outputs[index + 7].Value = (byte)((data[data.Length - 4] >> index) & 1);
+                    Outputs[index + 7].Value = (byte)((data[data.Count - 4] >> index) & 1);
             }
             else
             {
                 var numberOutPut = 0;
                 var countBitValue = 0;
                 byte bufferValue = 0;
-                for (var index = data.Length - 3; index >= data.Length - 7; index--)
+                for (var index = data.Count - 3; index >= data.Count - 7; index--)
                 {
                     for (var numBit = 0; numBit < 8; numBit++)
                     {

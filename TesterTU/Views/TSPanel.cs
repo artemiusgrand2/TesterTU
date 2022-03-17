@@ -47,7 +47,7 @@ namespace TesterTU.Views
                         if (model.Index <= 16)
                             Controls.Find($"panel{model.Index}", false)[0].BackColor = ControllerHelper.GetColorOutPut(model.Value);
                         else
-                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == 1) ? Color.Red : Color.Green;
+                            Controls.Find($"panel{model.Index}", false)[0].BackColor = (model.Value == -1) ? Color.Gray : (model.Value == 1) ? Color.Red : Color.Green;
                     }
                     break;
             }

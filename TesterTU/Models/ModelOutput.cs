@@ -6,9 +6,9 @@ namespace TesterTU.Models
     {
         public bool IsOn { get; set; }
 
-        byte _value;
+        int _value;
 
-        public byte Value
+        public int Value
         {
             get
             {

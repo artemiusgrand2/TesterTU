@@ -6,14 +6,13 @@ using System.Threading;
 using System.ComponentModel;
 
 using TesterTU.Models;
-using DataStream.SP;
 
 namespace TesterTU.Controllers
 {
     public class ControllerMain :IDisposable
     {
         ModelCommon _model;
-        IList<SerialPortDataStream> _dataStreams = new List<SerialPortDataStream>();
+        IList<ControllerSerialPort> _dataStreams = new List<ControllerSerialPort>();
         IList<Thread> _threadMKs = new List<Thread>();
         public bool IsStart { get; private set; }
 
@@ -25,13 +24,7 @@ namespace TesterTU.Controllers
         {
             Initialization();
             IsStart = true;
-            foreach (var thr in _threadMKs)
-                thr.Start(_threadMKs.IndexOf(thr));
-        }
-        public void Stop()
-        {
-            IsStart = false;
-            foreach(var device in _model.Devices)
+            foreach (var device in _model.Devices)
             {
                 foreach (var mk in device.MKs)
                 {
@@ -39,10 +32,17 @@ namespace TesterTU.Controllers
                     mk.Sessions = 0;
                     mk.Errors = 0;
                     //
-                    foreach(var output in mk.Outputs)
-                        output.Value = 0;
+                    foreach (var output in mk.Outputs)
+                        output.Value = -1;
                 }
             }
+            foreach (var thr in _threadMKs)
+                thr.Start(_threadMKs.IndexOf(thr));
+        }
+        public void Stop()
+        {
+            IsStart = false;
+           
         }
 
         public void Dispose()
@@ -63,17 +63,23 @@ namespace TesterTU.Controllers
                     indexDevice = 0;
                 try
                 {
-                    _model.Devices[indexDevice].MKs[(int)numberMK].Attempts++;
                     if (_dataStreams[(int)numberMK].Write(_model.Devices[indexDevice].MKs[(int)numberMK].RequestBytes) > 0)
                     {
+                        _model.Devices[indexDevice].MKs[(int)numberMK].Attempts++;
                         byte[] dataRead;
-                        if(_dataStreams[(int)numberMK].Read(out dataRead))
-                            _model.Devices[indexDevice].MKs[(int)numberMK].ParseData(dataRead);
+                        var resultBuffer = new List<byte>();
+                        while(_dataStreams[(int)numberMK].Read(out dataRead))
+                            resultBuffer.AddRange(dataRead.ToList());
+                        //
+                        _model.Devices[indexDevice].MKs[(int)numberMK].ParseData(resultBuffer);
                     }
                 }
-                catch { }
+                catch(Exception error)
+                {
+
+                }
                 indexDevice++;
-                Thread.Sleep(10);
+                Thread.Sleep((int)(100 / (double)_model.Devices.Count));
             }
         }
 
@@ -82,8 +88,9 @@ namespace TesterTU.Controllers
             Dispose();
             foreach(var connection in _model.ConnectionStrs)
             {
-                _dataStreams.Add(new SerialPortDataStream(connection));
+                _dataStreams.Add(new ControllerSerialPort(connection));
                 _threadMKs.Add(new Thread(WorkMK));
+                break;
             }
         }
     }

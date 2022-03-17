@@ -36,4 +36,3 @@ D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.SettingsPanel.resource
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TableDiagnostControl.resources
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TSPanel.resources
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TUPanel.resources
-D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.CopyComplete
