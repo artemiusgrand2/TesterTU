@@ -71,6 +71,7 @@ namespace TesterTU.Controllers
                         while(_dataStreams[(int)numberMK].Read(out dataRead))
                             resultBuffer.AddRange(dataRead.ToList());
                         //
+                        if(resultBuffer.Count > 0)
                         _model.Devices[indexDevice].MKs[(int)numberMK].ParseData(resultBuffer);
                     }
                 }
@@ -79,7 +80,7 @@ namespace TesterTU.Controllers
 
                 }
                 indexDevice++;
-                Thread.Sleep((int)(100 / (double)_model.Devices.Count));
+                Thread.Sleep((int)(50 / (double)_model.Devices.Count));
             }
         }
 
@@ -87,10 +88,9 @@ namespace TesterTU.Controllers
         {
             Dispose();
             foreach(var connection in _model.ConnectionStrs)
-            {
+            { 
                 _dataStreams.Add(new ControllerSerialPort(connection));
                 _threadMKs.Add(new Thread(WorkMK));
-                break;
             }
         }
     }

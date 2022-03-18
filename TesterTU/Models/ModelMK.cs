@@ -114,6 +114,10 @@ namespace TesterTU.Models
                 var byteCRC = ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray());
                 data[data.Length - 2] = (byte)((byteCRC & 240) >> 4);
                 data[data.Length - 1] = (byte)(byteCRC & 15);
+                if(NumberMK == 2)
+                {
+
+                }
                 //
                 return data;
             }

@@ -48,12 +48,14 @@ namespace TesterTU.Controllers
         {
             switch (value)
             {
+                case 0:
+                    return Color.White;
                 case 1:
-                    return Color.Yellow;
-                case 2:
                     return Color.Green;
+                case 2:
+                    return Color.Yellow;
                 case 3:
-                    return Color.Black;
+                    return Color.Red;
                 default:
                     return Color.Gray;
             }

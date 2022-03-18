@@ -21,11 +21,13 @@ namespace TesterTU.Views
             InitializeComponent();
             this.FormClosed += MainForm_FormClosed;
             //
+            var numberDevice = 1;
             foreach(var device in _model.Devices)
             {
                 var newDevice = GetControlTSTU(device);
-                newDevice.Location = new Point(5, panelDevices.Controls.Count * (newDevice.Height + 5) + 5);
+                newDevice.Location = new Point(5 + (numberDevice %2 == 0? (newDevice.Width + 5) : 0), (panelDevices.Controls.Count / 2) * (newDevice.Height + 5) + 5);
                 panelDevices.Controls.Add(newDevice);
+                numberDevice++;
             }
             //
             _controller.Stop();

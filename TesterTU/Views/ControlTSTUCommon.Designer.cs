@@ -42,9 +42,10 @@ namespace TesterTU.Views
             // 
             this.labelNumberDevice.AutoSize = true;
             this.labelNumberDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNumberDevice.Location = new System.Drawing.Point(3, 45);
+            this.labelNumberDevice.Location = new System.Drawing.Point(2, 37);
+            this.labelNumberDevice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNumberDevice.Name = "labelNumberDevice";
-            this.labelNumberDevice.Size = new System.Drawing.Size(40, 32);
+            this.labelNumberDevice.Size = new System.Drawing.Size(31, 26);
             this.labelNumberDevice.TabIndex = 0;
             this.labelNumberDevice.Text = "l1";
             // 
@@ -52,9 +53,10 @@ namespace TesterTU.Views
             // 
             this.kevValueControlcsMK0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.kevValueControlcsMK0.KeyText = "МК0";
-            this.kevValueControlcsMK0.Location = new System.Drawing.Point(76, 45);
+            this.kevValueControlcsMK0.Location = new System.Drawing.Point(41, 37);
+            this.kevValueControlcsMK0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kevValueControlcsMK0.Name = "kevValueControlcsMK0";
-            this.kevValueControlcsMK0.Size = new System.Drawing.Size(120, 43);
+            this.kevValueControlcsMK0.Size = new System.Drawing.Size(90, 35);
             this.kevValueControlcsMK0.TabIndex = 1;
             this.kevValueControlcsMK0.ValueText = "value";
             // 
@@ -62,9 +64,10 @@ namespace TesterTU.Views
             // 
             this.kevValueControlcsMK1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.kevValueControlcsMK1.KeyText = "МК1";
-            this.kevValueControlcsMK1.Location = new System.Drawing.Point(202, 23);
+            this.kevValueControlcsMK1.Location = new System.Drawing.Point(136, 19);
+            this.kevValueControlcsMK1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kevValueControlcsMK1.Name = "kevValueControlcsMK1";
-            this.kevValueControlcsMK1.Size = new System.Drawing.Size(120, 43);
+            this.kevValueControlcsMK1.Size = new System.Drawing.Size(90, 35);
             this.kevValueControlcsMK1.TabIndex = 2;
             this.kevValueControlcsMK1.ValueText = "value";
             // 
@@ -72,9 +75,10 @@ namespace TesterTU.Views
             // 
             this.kevValueControlcsMK2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.kevValueControlcsMK2.KeyText = "МК2";
-            this.kevValueControlcsMK2.Location = new System.Drawing.Point(202, 72);
+            this.kevValueControlcsMK2.Location = new System.Drawing.Point(136, 58);
+            this.kevValueControlcsMK2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kevValueControlcsMK2.Name = "kevValueControlcsMK2";
-            this.kevValueControlcsMK2.Size = new System.Drawing.Size(120, 43);
+            this.kevValueControlcsMK2.Size = new System.Drawing.Size(90, 35);
             this.kevValueControlcsMK2.TabIndex = 3;
             this.kevValueControlcsMK2.ValueText = "value";
             // 
@@ -82,9 +86,10 @@ namespace TesterTU.Views
             // 
             this.tableDiagnostControl1.BackColor = System.Drawing.Color.Transparent;
             this.tableDiagnostControl1.HeaderText = "Попытки";
-            this.tableDiagnostControl1.Location = new System.Drawing.Point(328, 3);
+            this.tableDiagnostControl1.Location = new System.Drawing.Point(230, 2);
+            this.tableDiagnostControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableDiagnostControl1.Name = "tableDiagnostControl1";
-            this.tableDiagnostControl1.Size = new System.Drawing.Size(86, 116);
+            this.tableDiagnostControl1.Size = new System.Drawing.Size(64, 94);
             this.tableDiagnostControl1.TabIndex = 4;
             this.tableDiagnostControl1.ValueMK1 = "0";
             this.tableDiagnostControl1.ValueMK2 = "0";
@@ -93,9 +98,10 @@ namespace TesterTU.Views
             // 
             this.tableDiagnostControl2.BackColor = System.Drawing.Color.Transparent;
             this.tableDiagnostControl2.HeaderText = "Сеансы";
-            this.tableDiagnostControl2.Location = new System.Drawing.Point(403, 3);
+            this.tableDiagnostControl2.Location = new System.Drawing.Point(286, 2);
+            this.tableDiagnostControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableDiagnostControl2.Name = "tableDiagnostControl2";
-            this.tableDiagnostControl2.Size = new System.Drawing.Size(86, 116);
+            this.tableDiagnostControl2.Size = new System.Drawing.Size(64, 94);
             this.tableDiagnostControl2.TabIndex = 5;
             this.tableDiagnostControl2.ValueMK1 = "0";
             this.tableDiagnostControl2.ValueMK2 = "0";
@@ -104,16 +110,17 @@ namespace TesterTU.Views
             // 
             this.tableDiagnostControl3.BackColor = System.Drawing.Color.Transparent;
             this.tableDiagnostControl3.HeaderText = "Ошибки";
-            this.tableDiagnostControl3.Location = new System.Drawing.Point(469, 3);
+            this.tableDiagnostControl3.Location = new System.Drawing.Point(336, 2);
+            this.tableDiagnostControl3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableDiagnostControl3.Name = "tableDiagnostControl3";
-            this.tableDiagnostControl3.Size = new System.Drawing.Size(87, 116);
+            this.tableDiagnostControl3.Size = new System.Drawing.Size(65, 94);
             this.tableDiagnostControl3.TabIndex = 6;
             this.tableDiagnostControl3.ValueMK1 = "0";
             this.tableDiagnostControl3.ValueMK2 = "0";
             // 
             // ControlTSTUCommon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.Controls.Add(this.tableDiagnostControl3);
@@ -123,8 +130,9 @@ namespace TesterTU.Views
             this.Controls.Add(this.kevValueControlcsMK1);
             this.Controls.Add(this.kevValueControlcsMK0);
             this.Controls.Add(this.labelNumberDevice);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ControlTSTUCommon";
-            this.Size = new System.Drawing.Size(540, 132);
+            this.Size = new System.Drawing.Size(405, 107);
             this.ResumeLayout(false);
             this.PerformLayout();
 

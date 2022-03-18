@@ -10,7 +10,7 @@ namespace TesterTU.Controllers
 {
     public class ControllerSerialPort
     {
-        private const int DefaultReadTimeout = 20;
+        private const int DefaultReadTimeout = 15;
 
         private readonly byte[] buffer = new byte[1024 * 1024];
 
