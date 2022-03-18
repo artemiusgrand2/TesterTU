@@ -63,7 +63,7 @@ namespace TesterTU.Models
         {
             get
             {
-                var data = new byte[9];
+                var data = new byte[_modelParent.View == ViewDevice.tu ? 9 : 7];
                 var bytesMK0 = BitConverter.GetBytes((ushort)(_modelParent.AdressMK0 << 1));
                 var bytesMKn = BitConverter.GetBytes((ushort)(NumberMK == 1 ? _modelParent.AdressMK1 : _modelParent.AdressMK2) << 1);
                 //
@@ -98,24 +98,22 @@ namespace TesterTU.Models
                             break;
                         case 5:
                             {
-                                data[index] = (byte)((_modelParent.View == ViewDevice.tu) ?
-                                    (ControllerHelper.GetByteFromBitArray((new BitArray(new bool[] {Outputs[4].IsOn, Outputs[5].IsOn, Outputs[6].IsOn, Outputs[7].IsOn,
-                                                                 false, false, false, false })))) : 0);
+                                data[index] = ControllerHelper.GetByteFromBitArray((new BitArray(new bool[] {Outputs[4].IsOn, Outputs[5].IsOn, Outputs[6].IsOn, Outputs[7].IsOn,
+                                                                 false, false, false, false })));
                             }
                             break;
                         case 6:
                             {
-                                data[index] = (byte)((_modelParent.View == ViewDevice.tu) ?
-                                  (ControllerHelper.GetByteFromBitArray((new BitArray(new bool[] {Outputs[0].IsOn, Outputs[1].IsOn, Outputs[2].IsOn, Outputs[3].IsOn,
-                                                                   false , false , false ,false})))) : 0);
+                                data[index] = ControllerHelper.GetByteFromBitArray((new BitArray(new bool[] {Outputs[0].IsOn, Outputs[1].IsOn, Outputs[2].IsOn, Outputs[3].IsOn,
+                                                                   false , false , false ,false})));
                             }
                             break;
                     }
                 }
                 //
                 var byteCRC = ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray());
-                data[7] = (byte)((byteCRC & 240) >> 4);
-                data[8] = (byte)(byteCRC & 15);
+                data[data.Length - 2] = (byte)((byteCRC & 240) >> 4);
+                data[data.Length - 1] = (byte)(byteCRC & 15);
                 //
                 return data;
             }
