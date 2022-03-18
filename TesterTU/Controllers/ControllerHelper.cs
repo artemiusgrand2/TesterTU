@@ -17,20 +17,27 @@ namespace TesterTU.Controllers
             var result = new List<ModelDevice>();
             if (File.Exists(path))
             {
-                foreach (var record in File.ReadAllLines(path))
+                try
                 {
-                    var cells = record.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (cells.Length >= 4)
+                    foreach (var record in File.ReadAllLines(path, Encoding.UTF8))
                     {
-                        var cellViewDevice = cells[0].ToUpper().Trim();
-                        var viewDevice = (cellViewDevice == "ТС") ? ViewDevice.ts : (cellViewDevice == "ТУ") ? ViewDevice.tu : ViewDevice.none;
-                        if (viewDevice == ViewDevice.none)
-                            continue;
-                        //
-                        ushort mk0, mk1, mk2;
-                        if (ushort.TryParse(cells[1], out mk0) && ushort.TryParse(cells[2], out mk1) && ushort.TryParse(cells[3], out mk2))
-                            result.Add(new ModelDevice(result.Count + 1, viewDevice, mk0, mk1, mk2));
+                        var cells = record.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (cells.Length >= 4)
+                        {
+                            var cellViewDevice = cells[0].ToUpper().Trim();
+                            var viewDevice = (cellViewDevice == "TS") ? ViewDevice.ts : (cellViewDevice == "TU") ? ViewDevice.tu : ViewDevice.none;
+                            if (viewDevice == ViewDevice.none)
+                                continue;
+                            //
+                            ushort mk0, mk1, mk2;
+                            if (ushort.TryParse(cells[1], out mk0) && ushort.TryParse(cells[2], out mk1) && ushort.TryParse(cells[3], out mk2))
+                                result.Add(new ModelDevice(result.Count + 1, viewDevice, mk0, mk1, mk2));
+                        }
                     }
+                }
+                catch(Exception error)
+                {
+                    System.Windows.Forms.MessageBox.Show(error.Message);
                 }
             }
             //   

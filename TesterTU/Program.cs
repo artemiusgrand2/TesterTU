@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -16,9 +17,7 @@ namespace TesterTU
         static void Main(string [] arg)
         {
             var model = new ModelCommon();
-            if (arg.Length != 0)
-                model.Devices.AddRange(ControllerHelper.GetDevices(arg[0]));
-            //
+            model.Devices.AddRange(ControllerHelper.GetDevices((arg.Length != 0) ? arg[0] : Path.Combine(Environment.CurrentDirectory, "devices.csv")));
             var controller = new ControllerMain(model);
             //
             Application.EnableVisualStyles();

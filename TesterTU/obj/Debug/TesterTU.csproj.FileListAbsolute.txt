@@ -23,8 +23,6 @@ D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.Views.TUPanel.resources
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTS.resources
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTU.resources
 D:\Distr\TesterTU\TesterTU\bin\Debug\TesterTU.exe.config
-D:\Distr\TesterTU\TesterTU\bin\Debug\DataStream.SerialPort.dll
-D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.CopyComplete
 D:\Distr\TesterTU\TesterTU\obj\Debug\TesterTU.csproj.AssemblyReference.cache
 D:\Distributiv\TesterTU\TesterTU\bin\Debug\TesterTU.exe.config
 D:\Distributiv\TesterTU\TesterTU\obj\Debug\TesterTU.Views.ControlTS.resources
