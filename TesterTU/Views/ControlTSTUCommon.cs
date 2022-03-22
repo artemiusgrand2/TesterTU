@@ -112,6 +112,15 @@ namespace TesterTU.Views
                             tableDiagnostControl3.ValueMK2 = model.Errors.ToString();
                     }
                     break;
+                case "Speed":
+                    {
+                        var sped = Math.Round(model.Speed);
+                        if (model.NumberMK == 1)
+                            tableDiagnostControl4.ValueMK1 = sped.ToString();
+                        else
+                            tableDiagnostControl4.ValueMK2 = sped.ToString();
+                    }
+                    break;
             }
         }
     }

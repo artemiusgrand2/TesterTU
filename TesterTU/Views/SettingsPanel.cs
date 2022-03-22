@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -43,7 +44,7 @@ namespace TesterTU.Views
         public SettingsPanel()
         {
             InitializeComponent();
-            comboBoxNamePort.DataSource = SerialPort.GetPortNames();
+            comboBoxNamePort.DataSource = SerialPort.GetPortNames().OrderBy(x => x).ToList();
             comboBoxBoudRoute.DataSource = new List<string>() { "9600", "14400", "19200", "38400", "57600", "115200"};
         }
     }

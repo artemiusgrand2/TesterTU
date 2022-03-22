@@ -31,6 +31,7 @@ namespace TesterTU.Controllers
                     mk.Attempts = 0;
                     mk.Sessions = 0;
                     mk.Errors = 0;
+                    mk.Speed = 0;
                     //
                     foreach (var output in mk.Outputs)
                         output.Value = -1;
@@ -67,20 +68,15 @@ namespace TesterTU.Controllers
                     {
                         _model.Devices[indexDevice].MKs[(int)numberMK].Attempts++;
                         byte[] dataRead;
-                        var resultBuffer = new List<byte>();
-                        while(_dataStreams[(int)numberMK].Read(out dataRead))
-                            resultBuffer.AddRange(dataRead.ToList());
-                        //
-                        if(resultBuffer.Count > 0)
-                        _model.Devices[indexDevice].MKs[(int)numberMK].ParseData(resultBuffer);
+                        if (_dataStreams[(int)numberMK].Read(out dataRead, _model.Devices[indexDevice].MKs[(int)numberMK].LenghtPacketAnswer))
+                            _model.Devices[indexDevice].MKs[(int)numberMK].ParseData(dataRead);
+                        else
+                            _model.Devices[indexDevice].MKs[(int)numberMK].Speed = 0;
                     }
                 }
-                catch(Exception error)
-                {
-
-                }
+                catch { }
                 indexDevice++;
-                Thread.Sleep((int)(50 / (double)_model.Devices.Count));
+               // Thread.Sleep((int)(40 / (double)_model.Devices.Count));
             }
         }
 

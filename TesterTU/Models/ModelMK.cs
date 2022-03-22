@@ -35,6 +35,10 @@ namespace TesterTU.Models
             set
             {
                 _sessions = value;
+                var delta = DateTime.Now - _lastSessions;
+                if (_lastSessions != DateTime.MinValue)
+                    Speed = delta.TotalMilliseconds;
+                _lastSessions = DateTime.Now;
                 OnPropertyChanged("Sessions");
             }
         }
@@ -53,11 +57,36 @@ namespace TesterTU.Models
             }
         }
 
+        double _speed;
+        public double Speed
+        {
+            get
+            {
+                return _speed;
+            }
+            set
+            {
+                _speed = value;
+                OnPropertyChanged("Speed");
+            }
+        }
+
+        public int LenghtPacketAnswer
+        {
+            get
+            {
+                return _modelParent.View == ViewDevice.ts ? 12 : 9;
+            }
+        }
+
+
+        private DateTime _lastSessions = DateTime.MinValue;
+
         private byte firstByteRequestTU = 0xD1;
         private byte firstByteRequestTS = 0xB1;
 
-        private byte firstByteAnswerTU = 0xD2;
-        private byte firstByteAnswerTS = 0xB2;
+        //private byte firstByteAnswerTU = 0xD2;
+        //private byte firstByteAnswerTS = 0xB2;
 
         public byte[] RequestBytes
         {
@@ -114,10 +143,6 @@ namespace TesterTU.Models
                 var byteCRC = ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray());
                 data[data.Length - 2] = (byte)((byteCRC & 240) >> 4);
                 data[data.Length - 1] = (byte)(byteCRC & 15);
-                if(NumberMK == 2)
-                {
-
-                }
                 //
                 return data;
             }
@@ -137,17 +162,17 @@ namespace TesterTU.Models
             for (var index = 1; index <= (_modelParent.View == ViewDevice.ts ? 18 : 9); index++)
                 Outputs.Add(new ModelOutput(index));
         }
-        public void ParseData(IList<byte> data)
+        public void ParseData(byte [] data)
         {
             Sessions++;
-            if (_modelParent.View == ViewDevice.ts && data.Count != 12 || _modelParent.View == ViewDevice.tu && data.Count != 9)
+            if (LenghtPacketAnswer != data.Length)
             {
                 Errors++;
                 return;
             }
             //
-            var crc = (byte)(data[data.Count - 1] | (byte)(data[data.Count - 2] << 4));
-            if(crc != ControllerHelper.GetCRC8(data.Take(data.Count - 2).ToArray()))
+            var crc = (byte)(data[data.Length - 1] | (byte)(data[data.Length - 2] << 4));
+            if(crc != ControllerHelper.GetCRC8(data.Take(data.Length - 2).ToArray()))
             {
                 Errors++;
                 return;
@@ -156,17 +181,17 @@ namespace TesterTU.Models
             if(_modelParent.View == ViewDevice.tu)
             {
                 for(var index =0; index <= 6; index++)
-                    Outputs[index].Value = (byte)((data[data.Count - 3] >> index) & 1);
+                    Outputs[index].Value = (byte)((data[data.Length - 3] >> index) & 1);
                 //
                 for (var index = 0; index <= 1; index++)
-                    Outputs[index + 7].Value = (byte)((data[data.Count - 4] >> index) & 1);
+                    Outputs[index + 7].Value = (byte)((data[data.Length - 4] >> index) & 1);
             }
             else
             {
                 var numberOutPut = 0;
                 var countBitValue = 0;
                 byte bufferValue = 0;
-                for (var index = data.Count - 3; index >= data.Count - 7; index--)
+                for (var index = data.Length - 3; index >= data.Length - 7; index--)
                 {
                     for (var numBit = 0; numBit < 8; numBit++)
                     {

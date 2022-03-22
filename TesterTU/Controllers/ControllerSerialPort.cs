@@ -10,7 +10,7 @@ namespace TesterTU.Controllers
 {
     public class ControllerSerialPort
     {
-        private const int DefaultReadTimeout = 15;
+        private const int DefaultReadTimeout = 20;
 
         private readonly byte[] buffer = new byte[1024 * 1024];
 
@@ -49,10 +49,11 @@ namespace TesterTU.Controllers
         public void ReConnect() { }
 
 
-        private void InitPort()
+        private void InitPort() 
         {
             port = new SerialPort(portName, baudRate);
-            port.ReadTimeout = DefaultReadTimeout;
+            //port.WriteTimeout = 2;
+           // port.ReadTimeout = DefaultReadTimeout;
         }
 
         private void Open()
@@ -60,15 +61,20 @@ namespace TesterTU.Controllers
             port.Open();
         }
 
-        public bool Read(out byte[] data)
+        public bool Read(out byte[] data, int lengtData)
         {
             lock (port)
             {
                 data = null;
+                var startRead = DateTime.Now;
                 while (true)
                 {
                     try
                     {
+                        if ((DateTime.Now - startRead).TotalMilliseconds >= DefaultReadTimeout)
+                            return false;
+                        if (port.BytesToRead < lengtData)
+                            continue;
                         int recieved = port.Read(buffer, 0, buffer.Length);
                         if (recieved == 0)
                             return false;

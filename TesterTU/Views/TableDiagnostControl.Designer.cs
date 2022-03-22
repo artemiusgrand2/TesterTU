@@ -37,7 +37,7 @@ namespace TesterTU.Views
             // labelMK2
             // 
             this.labelMK2.AutoSize = true;
-            this.labelMK2.Location = new System.Drawing.Point(21, 83);
+            this.labelMK2.Location = new System.Drawing.Point(3, 82);
             this.labelMK2.Name = "labelMK2";
             this.labelMK2.Size = new System.Drawing.Size(46, 17);
             this.labelMK2.TabIndex = 11;
@@ -46,7 +46,7 @@ namespace TesterTU.Views
             // labelMK1
             // 
             this.labelMK1.AutoSize = true;
-            this.labelMK1.Location = new System.Drawing.Point(21, 30);
+            this.labelMK1.Location = new System.Drawing.Point(3, 30);
             this.labelMK1.Name = "labelMK1";
             this.labelMK1.Size = new System.Drawing.Size(46, 17);
             this.labelMK1.TabIndex = 10;
@@ -55,7 +55,7 @@ namespace TesterTU.Views
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
-            this.labelHeader.Location = new System.Drawing.Point(12, 0);
+            this.labelHeader.Location = new System.Drawing.Point(-4, 1);
             this.labelHeader.Name = "labelHeader";
             this.labelHeader.Size = new System.Drawing.Size(66, 17);
             this.labelHeader.TabIndex = 9;
@@ -69,8 +69,9 @@ namespace TesterTU.Views
             this.Controls.Add(this.labelMK2);
             this.Controls.Add(this.labelMK1);
             this.Controls.Add(this.labelHeader);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableDiagnostControl";
-            this.Size = new System.Drawing.Size(91, 116);
+            this.Size = new System.Drawing.Size(86, 116);
             this.ResumeLayout(false);
             this.PerformLayout();
 
