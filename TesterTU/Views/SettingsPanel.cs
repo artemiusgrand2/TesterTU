@@ -45,7 +45,7 @@ namespace TesterTU.Views
         {
             InitializeComponent();
             comboBoxNamePort.DataSource = SerialPort.GetPortNames().OrderBy(x => x).ToList();
-            comboBoxBoudRoute.DataSource = new List<string>() { "9600", "14400", "19200", "38400", "57600", "115200"};
+            comboBoxBoudRoute.DataSource = new List<string>() { "115200" };
         }
     }
 }
