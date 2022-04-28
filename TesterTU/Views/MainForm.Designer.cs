@@ -58,7 +58,7 @@ namespace TesterTU.Views
             this.panelSettings.Controls.Add(this.buttonStartStop);
             this.panelSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSettings.Location = new System.Drawing.Point(0, 0);
-            this.panelSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSettings.Margin = new System.Windows.Forms.Padding(2);
             this.panelSettings.Name = "panelSettings";
             this.panelSettings.Size = new System.Drawing.Size(1144, 119);
             this.panelSettings.TabIndex = 7;
@@ -68,23 +68,23 @@ namespace TesterTU.Views
             this.panelDevices.AutoScroll = true;
             this.panelDevices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDevices.Location = new System.Drawing.Point(0, 119);
-            this.panelDevices.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelDevices.Margin = new System.Windows.Forms.Padding(2);
             this.panelDevices.Name = "panelDevices";
             this.panelDevices.Size = new System.Drawing.Size(1144, 576);
             this.panelDevices.TabIndex = 8;
             // 
             // settingsPanelMK2
             // 
-            this.settingsPanelMK2.Location = new System.Drawing.Point(232, 5);
+            this.settingsPanelMK2.Location = new System.Drawing.Point(232, 2);
             this.settingsPanelMK2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.settingsPanelMK2.Name = "settingsPanelMK2";
-            this.settingsPanelMK2.Size = new System.Drawing.Size(224, 106);
+            this.settingsPanelMK2.Size = new System.Drawing.Size(224, 110);
             this.settingsPanelMK2.TabIndex = 2;
             this.settingsPanelMK2.TextPanel = "Настройка COM МК2";
             // 
             // settingsPanelMK1
             // 
-            this.settingsPanelMK1.Location = new System.Drawing.Point(0, 0);
+            this.settingsPanelMK1.Location = new System.Drawing.Point(4, 2);
             this.settingsPanelMK1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.settingsPanelMK1.Name = "settingsPanelMK1";
             this.settingsPanelMK1.Size = new System.Drawing.Size(224, 110);
