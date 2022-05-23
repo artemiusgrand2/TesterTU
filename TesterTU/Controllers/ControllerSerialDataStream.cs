@@ -6,9 +6,11 @@ using System.Linq;
 using System.IO.Ports;
 using System.Threading;
 
+using TesterTU.Interfaces;
+
 namespace TesterTU.Controllers
 {
-    public class ControllerSerialPort
+    public class ControllerSerialDataStream : IControllerDataStream
     {
         private const int DefaultReadTimeout = 20;
 
@@ -19,7 +21,7 @@ namespace TesterTU.Controllers
         private SerialPort port;
 
 
-        public ControllerSerialPort(string connectionString)
+        public ControllerSerialDataStream(string connectionString)
         {
             string[] parts = connectionString.Split(':');
             if (parts.Length != 2)
@@ -45,8 +47,6 @@ namespace TesterTU.Controllers
             }
             throw new InvalidDataException(string.Format("Port with name \"{0}\" doesn't exist", portName));
         }
-
-        public void ReConnect() { }
 
 
         private void InitPort() 

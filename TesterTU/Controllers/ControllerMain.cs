@@ -6,13 +6,15 @@ using System.Threading;
 using System.ComponentModel;
 
 using TesterTU.Models;
+using TesterTU.Enums;
+using TesterTU.Interfaces;
 
 namespace TesterTU.Controllers
 {
     public class ControllerMain :IDisposable
     {
         ModelCommon _model;
-        IList<ControllerSerialPort> _dataStreams = new List<ControllerSerialPort>();
+        IList<IControllerDataStream> _dataStreams = new List<IControllerDataStream>();
         IList<Thread> _threadMKs = new List<Thread>();
         public bool IsStart { get; private set; }
 
@@ -84,8 +86,12 @@ namespace TesterTU.Controllers
         {
             Dispose();
             foreach(var connection in _model.ConnectionStrs)
-            { 
-                _dataStreams.Add(new ControllerSerialPort(connection));
+            {
+                if (connection.Key == ViewSource.comPort)
+                    _dataStreams.Add(new ControllerSerialDataStream(connection.Value));
+                else
+                    _dataStreams.Add(new ControllerTcpDataStream(connection.Value));
+                //
                 _threadMKs.Add(new Thread(WorkMK));
             }
         }

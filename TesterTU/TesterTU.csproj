@@ -46,9 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ControllerMain.cs" />
-    <Compile Include="Controllers\ControllerSerialPort.cs" />
+    <Compile Include="Controllers\ControllerSerialDataStream.cs" />
+    <Compile Include="Controllers\ControllerTcpDataStream.cs" />
     <Compile Include="Enums\ViewDevice.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
+    <Compile Include="Enums\ViewSource.cs" />
+    <Compile Include="Interfaces\IControllerDataStream.cs" />
     <Compile Include="Models\ModelCommon.cs" />
     <Compile Include="Models\ModelDevice.cs" />
     <Compile Include="Models\ModelOutput.cs" />

@@ -50,8 +50,8 @@ namespace TesterTU.Views
         {
             if (!_controller.IsStart)
             {
-                _model.SetConnectionStr(0, settingsPanelMK1.NameComPort, settingsPanelMK1.BoudComPort);
-                _model.SetConnectionStr(1, settingsPanelMK2.NameComPort, settingsPanelMK2.BoudComPort);
+                _model.SetConnectionStr(0, settingsPanelMK1.ConnectionStr, settingsPanelMK1.View);
+                _model.SetConnectionStr(1, settingsPanelMK2.ConnectionStr, settingsPanelMK2.View);
                 settingsPanelMK1.Enabled = false;
                 settingsPanelMK2.Enabled = false;
                 _controller.Start();

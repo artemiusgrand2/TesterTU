@@ -41,7 +41,7 @@ namespace TesterTU.Views
             // buttonStartStop
             // 
             this.buttonStartStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonStartStop.Location = new System.Drawing.Point(472, 33);
+            this.buttonStartStop.Location = new System.Drawing.Point(472, 44);
             this.buttonStartStop.Name = "buttonStartStop";
             this.buttonStartStop.Size = new System.Drawing.Size(133, 54);
             this.buttonStartStop.TabIndex = 0;
@@ -60,36 +60,36 @@ namespace TesterTU.Views
             this.panelSettings.Location = new System.Drawing.Point(0, 0);
             this.panelSettings.Margin = new System.Windows.Forms.Padding(2);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(1144, 119);
+            this.panelSettings.Size = new System.Drawing.Size(1144, 140);
             this.panelSettings.TabIndex = 7;
             // 
             // panelDevices
             // 
             this.panelDevices.AutoScroll = true;
             this.panelDevices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDevices.Location = new System.Drawing.Point(0, 119);
+            this.panelDevices.Location = new System.Drawing.Point(0, 140);
             this.panelDevices.Margin = new System.Windows.Forms.Padding(2);
             this.panelDevices.Name = "panelDevices";
-            this.panelDevices.Size = new System.Drawing.Size(1144, 576);
+            this.panelDevices.Size = new System.Drawing.Size(1144, 555);
             this.panelDevices.TabIndex = 8;
             // 
             // settingsPanelMK2
             // 
             this.settingsPanelMK2.Location = new System.Drawing.Point(232, 2);
-            this.settingsPanelMK2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsPanelMK2.Margin = new System.Windows.Forms.Padding(2);
             this.settingsPanelMK2.Name = "settingsPanelMK2";
-            this.settingsPanelMK2.Size = new System.Drawing.Size(224, 110);
+            this.settingsPanelMK2.Size = new System.Drawing.Size(224, 133);
             this.settingsPanelMK2.TabIndex = 2;
-            this.settingsPanelMK2.TextPanel = "Настройка COM МК2";
+            this.settingsPanelMK2.TextPanel = "Настройка МК2";
             // 
             // settingsPanelMK1
             // 
             this.settingsPanelMK1.Location = new System.Drawing.Point(4, 2);
-            this.settingsPanelMK1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsPanelMK1.Margin = new System.Windows.Forms.Padding(2);
             this.settingsPanelMK1.Name = "settingsPanelMK1";
-            this.settingsPanelMK1.Size = new System.Drawing.Size(224, 110);
+            this.settingsPanelMK1.Size = new System.Drawing.Size(224, 133);
             this.settingsPanelMK1.TabIndex = 1;
-            this.settingsPanelMK1.TextPanel = "Настройка COM МК1";
+            this.settingsPanelMK1.TextPanel = "Настройка МК1";
             // 
             // MainForm
             // 
